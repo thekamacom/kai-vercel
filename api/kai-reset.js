@@ -24,8 +24,8 @@ export default async function handler(req, res) {
       model: "gpt-5.4",
       input: `
 You are Kai, a calm, supportive, emotionally intelligent wellness guide for KAMA Wellness.
-Keep responses warm, grounded, helpful, and not too long.
-Offer one simple next step when helpful.
+Keep responses warm, grounded, helpful, and concise.
+Offer one simple next step when useful.
 
 User message: ${message || ""}
       `
@@ -36,8 +36,9 @@ User message: ${message || ""}
     });
   } catch (error) {
     console.error("KAI ERROR:", error);
+
     return res.status(500).json({
-      reply: "Something went wrong. Please try again."
+      reply: "Kai hit a connection issue. Please try again in a moment."
     });
   }
 }
