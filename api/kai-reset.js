@@ -34,11 +34,11 @@ User message: ${message || ""}
     return res.status(200).json({
       reply: response.output_text || "Take a breath. Reset and begin again."
     });
-  } catch (error) {
-    console.error("KAI ERROR:", error);
+    } catch (error) {
+    console.error("KAI ERROR FULL:", error);
 
     return res.status(500).json({
-      reply: "Kai hit a connection issue. Please try again in a moment."
+      reply: error?.message || "Kai hit a connection issue."
     });
   }
 }
